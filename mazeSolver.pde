@@ -3,9 +3,12 @@ import java.util.*;
 
 
 
+import java.util.*;
+
 public class MazeSolver {
     private static final int GRID_SIZE = 800;
     private int[][] grid = new int[GRID_SIZE][GRID_SIZE];
+    private Set<Pointed> discoveredCells = new HashSet<>(); // Track discovered cells
 
     public MazeSolver(List<int[]> rectangles) {
         for (int[] rect : rectangles) {
@@ -25,6 +28,7 @@ public class MazeSolver {
         frontier.add(start);
         cameFrom.put(start, null);
         costSoFar.put(start, 0);
+        discoveredCells.add(start); // Add start to discovered cells
 
         while (!frontier.isEmpty()) {
             Pointed current = frontier.poll();
@@ -39,12 +43,24 @@ public class MazeSolver {
                     costSoFar.put(next, newCost);
                     frontier.add(next);
                     cameFrom.put(next, current);
+                    discoveredCells.add(next); // Add next to discovered cells
                 }
             }
         }
 
+        // printDiscoveredCells(); // Optionally print discovered cells
         return reconstructPath(cameFrom, start, goal);
     }
+
+    // Method to print discovered cells
+    private void printDiscoveredCells() {
+        for (Pointed p : discoveredCells) {
+            System.out.println(p.x + "," + p.y);
+        }
+    }
+
+    // Other methods remain the same..
+
 
     private List<Pointed> getNeighbors(Pointed current) {
         List<Pointed> neighbors = new ArrayList<>();
@@ -76,3 +92,5 @@ public class MazeSolver {
     }
 
 }
+
+
