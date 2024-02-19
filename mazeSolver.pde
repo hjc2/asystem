@@ -9,11 +9,13 @@ public class MazeSolver {
     private int[][] grid = new int[GRID_SIZE][GRID_SIZE];
     private Set<Point> discoveredCells = new HashSet<>(); // Track discovered cells
 
-    public MazeSolver(List<int[]> rectangles) {
-        for (int[] rect : rectangles) {
-            int x = rect[0], y = rect[1], width = rect[2], height = rect[3];
-            for (int i = x; i < x + width && i < GRID_SIZE; i++) {
-                for (int j = y; j < y + height && j < GRID_SIZE; j++) {
+    public MazeSolver(ArrayList<Rectangle> rectangles) {
+
+        
+        for (Rectangle rect : rectangles) {
+            int x = rect.x, y = rect.y, w = rect.w, h = rect.h;
+            for (int i = x; i < x + w && i < GRID_SIZE; i++) {
+                for (int j = y; j < y + h && j < GRID_SIZE; j++) {
                     grid[i][j] = 1; // Mark as blocked
                 }
             }
