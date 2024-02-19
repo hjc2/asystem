@@ -1,9 +1,9 @@
 
 
-    public class Pointed {
+    public class Point {
         int x, y;
 
-        Pointed(int x, int y) {
+        Point(int x, int y) {
             this.x = x;
             this.y = y;
         }
@@ -12,8 +12,8 @@
         public boolean equals(Object obj) {
             if (this == obj) return true;
             if (obj == null || getClass() != obj.getClass()) return false;
-            Pointed Pointed = (Pointed) obj;
-            return x == Pointed.x && y == Pointed.y;
+            Point Point = (Point) obj;
+            return x == Point.x && y == Point.y;
         }
 
         @Override

@@ -1,5 +1,4 @@
 
-import java.util.*;
 
 
 
@@ -8,7 +7,7 @@ import java.util.*;
 public class MazeSolver {
     private static final int GRID_SIZE = 800;
     private int[][] grid = new int[GRID_SIZE][GRID_SIZE];
-    private Set<Pointed> discoveredCells = new HashSet<>(); // Track discovered cells
+    private Set<Point> discoveredCells = new HashSet<>(); // Track discovered cells
 
     public MazeSolver(List<int[]> rectangles) {
         for (int[] rect : rectangles) {
@@ -21,23 +20,23 @@ public class MazeSolver {
         }
     }
 
-    public List<Pointed> solve(Pointed start, Pointed goal) {
-        Map<Pointed, Pointed> cameFrom = new HashMap<>();
-        Map<Pointed, Integer> costSoFar = new HashMap<>();
-        PriorityQueue<Pointed> frontier = new PriorityQueue<>(Comparator.comparingInt(p -> costSoFar.get(p) + heuristic(p, goal)));
+    public List<Point> solve(Point start, Point goal) {
+        Map<Point, Point> cameFrom = new HashMap<>();
+        Map<Point, Integer> costSoFar = new HashMap<>();
+        PriorityQueue<Point> frontier = new PriorityQueue<>(Comparator.comparingInt(p -> costSoFar.get(p) + heuristic(p, goal)));
         frontier.add(start);
         cameFrom.put(start, null);
         costSoFar.put(start, 0);
         discoveredCells.add(start); // Add start to discovered cells
 
         while (!frontier.isEmpty()) {
-            Pointed current = frontier.poll();
+            Point current = frontier.poll();
 
             if (current.equals(goal)) {
                 break;
             }
 
-            for (Pointed next : getNeighbors(current)) {
+            for (Point next : getNeighbors(current)) {
                 int newCost = costSoFar.get(current) + 1;
                 if (!costSoFar.containsKey(next) || newCost < costSoFar.get(next)) {
                     costSoFar.put(next, newCost);
@@ -54,7 +53,7 @@ public class MazeSolver {
 
     // Method to print discovered cells
     private void printDiscoveredCells() {
-        for (Pointed p : discoveredCells) {
+        for (Point p : discoveredCells) {
             System.out.println(p.x + "," + p.y);
         }
     }
@@ -62,27 +61,27 @@ public class MazeSolver {
     // Other methods remain the same..
 
 
-    private List<Pointed> getNeighbors(Pointed current) {
-        List<Pointed> neighbors = new ArrayList<>();
+    private List<Point> getNeighbors(Point current) {
+        List<Point> neighbors = new ArrayList<>();
         int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 4-directional movement
 
         for (int[] dir : directions) {
             int nx = current.x + dir[0], ny = current.y + dir[1];
             if (nx >= 0 && nx < GRID_SIZE && ny >= 0 && ny < GRID_SIZE && grid[nx][ny] == 0) {
-                neighbors.add(new Pointed(nx, ny));
+                neighbors.add(new Point(nx, ny));
             }
         }
 
         return neighbors;
     }
 
-    private int heuristic(Pointed a, Pointed b) {
+    private int heuristic(Point a, Point b) {
         return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
     }
 
-    private List<Pointed> reconstructPath(Map<Pointed, Pointed> cameFrom, Pointed start, Pointed goal) {
-        LinkedList<Pointed> path = new LinkedList<>();
-        Pointed current = goal;
+    private List<Point> reconstructPath(Map<Point, Point> cameFrom, Point start, Point goal) {
+        LinkedList<Point> path = new LinkedList<>();
+        Point current = goal;
         while (!current.equals(start)) {
             path.addFirst(current);
             current = cameFrom.get(current);
