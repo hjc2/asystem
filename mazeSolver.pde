@@ -5,18 +5,35 @@
 import java.util.*;
 
 public class MazeSolver {
-    private static final int GRID_SIZE = 800;
-    private int[][] grid = new int[GRID_SIZE][GRID_SIZE];
+    private int GRID_SIZE;
+    private int[][] grid;
     private Set<Point> discoveredCells = new HashSet<>(); // Track discovered cells
 
-    public MazeSolver(ArrayList<Rectangle> rectangles) {
+    public MazeSolver(ArrayList<Rectangle> rectangles, int width) {
 
+        GRID_SIZE = width;
+
+        grid = new int[GRID_SIZE][GRID_SIZE];
         
         for (Rectangle rect : rectangles) {
             int x = rect.x, y = rect.y, w = rect.w, h = rect.h;
             for (int i = x; i < x + w && i < GRID_SIZE; i++) {
                 for (int j = y; j < y + h && j < GRID_SIZE; j++) {
-                    grid[i][j] = 1; // Mark as blocked
+                    int a = i;
+                    int b = j;
+                    if(a < 0){
+                        a = 0;
+                    }
+                    if(a >= GRID_SIZE){
+                        a = GRID_SIZE - 1;
+                    }
+                    if(b < 0){
+                        b = GRID_SIZE;
+                    }
+                    if(b >= GRID_SIZE){
+                        b = GRID_SIZE - 1;
+                    }
+                    grid[a][b] = 1; // Mark as blocked
                 }
             }
         }

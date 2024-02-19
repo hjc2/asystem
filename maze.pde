@@ -14,23 +14,21 @@ public class Maze {
     Point goal;
 
     public Maze(){
+        this(0,0, width - 1, height - 1);
+    }
 
-        // println("i ran!");
+    public Maze(int x1, int y1, int x2, int y2){
 
-        // rectangles = Arrays.asList(new int[]{100, 100, 200, 200}, new int[]{400, 400, 100, 100}, new int[]{500,0,10,400}, new int[]{600,400,20,400});
+        // Rectangle tmp = new Rectangle(200,200,400,400);
+        // rectangles.add(tmp);
 
-        // rectangles = Arrays.asList();
+        start = new Point(x1, y1);
+        goal = new Point(x2, y2);
+    }
 
-        // rectangles.append(new int[]{200,200,400,400});
-
-        Rectangle tmp = new Rectangle(200,200,400,400);
-        rectangles.add(tmp);
-
-        solver = new MazeSolver(rectangles);
-        start = new Point(0, 0);
-        goal = new Point(799, 799);
+    public void solve(){
+        solver = new MazeSolver(rectangles, width);
         path = solver.solve(start, goal);
-
     }
     public void draw(){
     
@@ -48,15 +46,21 @@ public class Maze {
             point(p.x, p.y);
         }
 
-        strokeWeight(5);
-            stroke(0,0,255);
+        strokeWeight(3);
+        stroke(0,0,255);
+
         for(Point p : path) {
             point(p.x, p.y);
         }
 
         strokeWeight(6);
-        stroke(255,0,255);
-        point(800,800);
+        stroke(255,0,0);
+        point(goal.x,goal.y);
+    }
+
+    public void add(int x, int y, int w, int h){
+        Rectangle tmp = new Rectangle(x,y,w,h);
+        rectangles.add(tmp);
     }
 
 }
