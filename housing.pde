@@ -24,15 +24,15 @@ class Housing extends System {
         this.add("U -> [U r U d U l U]");
         this.add("U -> [U r U d U l U]");
         this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");        
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
+        // this.add("U -> [U r U d U l U]");
+        // this.add("U -> [U r U d U l U]");
+        // this.add("U -> [U r U d U l U]");
+        // this.add("U -> [U r U d U l U]");
+        // this.add("U -> [U r U d U l U]");        
+        // this.add("U -> [U r U d U l U]");
+        // this.add("U -> [U r U d U l U]");
+        // this.add("U -> [U r U d U l U]");
+        // this.add("U -> [U r U d U l U]");
         // has to go to double, or else they will be insufficiently small
         // could also double the length of the drawing.
         this.add("U -> [xxyyzzqq]");
