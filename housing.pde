@@ -21,12 +21,13 @@ class Housing extends System {
 
         super("U");
 
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
+        stack.push("U");
+        n += 1;
+        value = "[U r U d U l U u]";
+
+        this.add("U -> [U r U d U l U u]");
+        this.add("U -> [U r U d U l U u]");
+        this.add("U -> [U r U d U l U u]");
         // this.add("U -> [U r U d U l U]");
         // this.add("U -> [U r U d U l U]");
         // this.add("U -> [U r U d U l U]");
@@ -38,6 +39,7 @@ class Housing extends System {
         this.add("r -> rr");
         this.add("d -> dd");
         this.add("l -> ll");
+        this.add("u -> uu");
 
         // this doubling preserves the size of the squares as the len divides every time.
         this.add("x -> xx"); // right
@@ -51,12 +53,6 @@ class Housing extends System {
 
     public void populate(){
 
-        noFill();
-        rectMode(CORNER);
-
-        stroke(0);
-        strokeWeight(2);
-
         for(int i=0; i<value.length(); i++) {
 
             char c = value.charAt(i);
@@ -64,25 +60,28 @@ class Housing extends System {
             float len = (height) / pow(2,n);
         
             if(c == 'r'){
-                // translate(len,0);
                 pt.x += len;
             }
             if(c == 'd'){
-                // translate(0,len);
                 pt.y += len;
             }
             if(c == 'l'){
-                // translate(-len,0);
                 pt.x -= len;
+            }
+            if(c == 'u'){
+                pt.y -= len;
             }
 
             if(c == '['){
                 pushMatrix(); 
                 pts.add(pt);
+                println(pts.size());
             }
             if(c == ']'){
                 popMatrix();
                 pt = pts.pop();
+                println(pts.size());
+
             }
 
             if(c == 'x'){

@@ -28,6 +28,8 @@ void setup(){
         house.update();
         house.update();
         house.update();
+        // house.update();
+
         house.populate();
 
         board = makeGrid(house.lines, width / scale);
@@ -41,12 +43,12 @@ void setup(){
 
     maze.lines = house.lines;
 
-    println(maze.lines.size());
-    println(house.value);
+    // println(maze.lines.size());
+    // println(house.value);
 
-    for(int i = 0; i < maze.lines.size(); i++){
-        maze.lines.get(i).print();
-    }
+    // for(int i = 0; i < maze.lines.size(); i++){
+    //     maze.lines.get(i).print();
+    // }
     // println(b.isPath(board, maze.start, maze.goal));
 
     maze.solve(board);
