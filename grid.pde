@@ -1,12 +1,13 @@
 
 
-int[][] makeGrid(ArrayList<Line> lines, int width){
+int[][] makeGrid(ArrayList<Line> lines, int pw){
 
-    int GRID_SIZE = width;
+    int GRID_SIZE = pw;
     int[][] grid = new int[GRID_SIZE][GRID_SIZE];
 
     for(Line line : lines){
         
+
         int x1 = line.x1;
         x1 = x1 >= GRID_SIZE ? GRID_SIZE - 1 : x1;
         x1 = x1 < 0 ? 0 : x1;
@@ -23,6 +24,13 @@ int[][] makeGrid(ArrayList<Line> lines, int width){
         y2 = y2 >= GRID_SIZE ? GRID_SIZE - 1 : y2;
         y2 = y2 < 0 ? 0 : y2;
 
+        if(line.x2 >= 200){
+            println(x2);
+            println(x1);
+            println(y1);
+            println(y2);
+        }
+
         if(y1 == y2){
             for(int i = x1; i <= x2; i++){
                 grid[i][y1] = 1;
@@ -36,7 +44,7 @@ int[][] makeGrid(ArrayList<Line> lines, int width){
             for(int i = y1; i <= y2; i++){
                 grid[x1][i] = 1;
             }
-            for(int i = x2; i <= x1; i++){
+            for(int i = y2; i <= y1; i++){
                 grid[x1][i] = 1;
             }
         }

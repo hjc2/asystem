@@ -11,45 +11,39 @@ BFS b = new BFS();
 int[][] board;
 
 
+int scale = 4;
+
 void setup(){
 
 
-    size(400,400);
+    size(800,800);
 
-    maze = new Maze(10,10, width - 10, width - 10);
+
+    maze = new Maze(10,10, width / scale - 10, width / scale - 10);
 
     // house.update();
     // house.update();
 
-    // println("k");
+    house.addLine(0,50,150,50);
+    house.addLine(50,100,250,100);
 
-    // house.populate();
-
-    // house.addLine(100,100,300,100);
-    // house.addLine(100,100,100,300);
-    // house.addLine(300,100,300,300);
-    // house.addLine(100,300,300,300);
-    // house.addLine(100,50,100,height);
-
-    house.addLine(0,50,50,50);
-    // house.addLine(50,0,50,50);
-
-    board = makeGrid(house.lines, width);
+    
+    board = makeGrid(house.lines, width / scale);
 
     maze.lines = house.lines;
 
 
-    println(b.isPath(board, maze.start, maze.goal));
+    // println(b.isPath(board, maze.start, maze.goal));
 
-    // maze.solve(board);
+    maze.solve(board);
 }
 
 void draw(){
 
     background(0);
 
-    // scale(2);
+    scale(scale);
 
-    // maze.draw();
+    maze.draw();
 
 }

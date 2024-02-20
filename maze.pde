@@ -12,7 +12,7 @@ public class Maze {
     Point goal;
 
     public Maze(){
-        this(0,0, width - 1, height - 1);
+        this(0,0, 1, 1);
     }
 
     public Maze(int x1, int y1, int x2, int y2){
@@ -22,7 +22,7 @@ public class Maze {
     }
 
     public void solve(int[][] grid){
-        solver = new MazeSolver(grid, width);
+        solver = new MazeSolver(grid);
         
         path = solver.solve(start, goal);
     }
@@ -30,8 +30,11 @@ public class Maze {
     public void draw(){
     
         rectMode(CORNER);
-        stroke(80,80,80);
-        strokeWeight(3);
+        stroke(140,140,140);
+        strokeWeight(1);
+
+        strokeCap(PROJECT);
+
 
         for (Line line : lines) {
             noFill();
@@ -45,6 +48,7 @@ public class Maze {
         //     point(p.x,p.y);
         // }
 
+
         strokeWeight(1);
         stroke(0,0,255);
 
@@ -52,9 +56,13 @@ public class Maze {
             point(p.x, p.y);
         }
 
-        strokeWeight(6);
+        strokeWeight(3);
+        stroke(0,255,0);
+        point(start.x,start.y);
         stroke(255,0,0);
         point(goal.x,goal.y);
+
+
     }
 
 

@@ -1,7 +1,5 @@
 // A simple Point class to represent positions on the grid
 
-BFS bfs;
-
 class BFS {
   BFS() {
   }

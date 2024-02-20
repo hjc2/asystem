@@ -9,9 +9,9 @@ public class MazeSolver {
     private int[][] grid;
     private Set<Point> discoveredCells = new HashSet<>(); // Track discovered cells
 
-    public MazeSolver(int[][] grid, int width) {
+    public MazeSolver(int[][] grid) {
 
-        GRID_SIZE = width;
+        GRID_SIZE = grid.length;
 
         this.grid = grid;
         
