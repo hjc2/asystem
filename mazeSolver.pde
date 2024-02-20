@@ -9,45 +9,31 @@ public class MazeSolver {
     private int[][] grid;
     private Set<Point> discoveredCells = new HashSet<>(); // Track discovered cells
 
-    public MazeSolver(ArrayList<Rectangle> rectangles, ArrayList<Line> lines, int width) {
+    public MazeSolver(ArrayList<Line> lines, int width) {
 
         GRID_SIZE = width;
 
         grid = new int[GRID_SIZE][GRID_SIZE];
         
-        for (Rectangle rect : rectangles) {
-            int x = rect.x, y = rect.y, w = rect.w, h = rect.h;
-            for (int i = x; i < x + w && i < GRID_SIZE; i++) {
-                for (int j = y; j < y + h && j < GRID_SIZE; j++) {
-                    int a = i;
-                    int b = j;
-                    if(a < 0){
-                        a = 0;
-                    }
-                    if(a >= GRID_SIZE){
-                        a = GRID_SIZE - 1;
-                    }
-                    if(b < 0){
-                        b = GRID_SIZE;
-                    }
-                    if(b >= GRID_SIZE){
-                        b = GRID_SIZE - 1;
-                    }
-                    grid[a][b] = 1; // Mark as blocked
-                }
-            }
-        }
-
         for(Line line : lines){
 
-            if(x1 == x2){
-                
-                // for(int i = )
+
+            if(line.x1 == line.x2){
+                for(int i = line.x1; i <= line.x2; i++){
+                    grid[i][line.y1] = 1;
+                }
+                for(int i = line.x2; i <= line.x1; i++){
+                    grid[i][line.y1] = 1;
+                }
             }
 
-            if(y1 == y2){
-
-
+            if(line.y1 == line.y2){
+                for(int i = line.y1; i <= line.y2; i++){
+                    grid[line.x1][i] = 1;
+                }
+                for(int i = line.x2; i <= line.x1; i++){
+                    grid[line.x1][i] = 1;
+                }
             }
 
         }

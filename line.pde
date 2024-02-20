@@ -3,7 +3,7 @@
 
 
 
-class Rectangle {
+class Line {
 
     int x1;
     int y1;

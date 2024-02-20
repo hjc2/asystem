@@ -22,15 +22,10 @@ void setup(){
 
     house.populate();
 
-    println(house.rects.size());
-    for(Rectangle r : house.rects){
+    // println(maze.lines.size());
+    maze.lines = house.lines;
+        println(maze.lines.size());
 
-        maze.add(r);
-
-        // println(r.x + " " + r.y);
-    }
-
-    println(maze.rectangles.size());
     maze.solve();
 
 }

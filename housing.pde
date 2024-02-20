@@ -12,6 +12,8 @@ class Housing extends System {
 
     // ArrayList<Rectangle> rects = new ArrayList();
 
+    ArrayList<Line> lines = new ArrayList();
+
     int x = 0;
     int y = 0;
 
@@ -80,18 +82,25 @@ class Housing extends System {
 
             if(c == 'x'){
                 // addList(pt.x, pt.y, len);
+                addLine(pt.x, pt.y, pt.x + len, pt.y);
+
                 pt.x += len;
             }
             if(c == 'y'){
-                addList(int(pt.x - len), pt.y, len);
+                // addList(int(pt.x - len), pt.y, len);
+                addLine(pt.x, pt.y, pt.x, pt.y + len);
                 pt.y += len;
             }
             if(c == 'z'){
-                addList(int(pt.x - len), int(pt.y - len), len);
+                addLine(pt.x - len, pt.y, pt.x, pt.y);
+
+                // addList(int(pt.x - len), int(pt.y - len), len);
                 pt.x -= len;
             }
             if(c == 'q'){
-                addList(pt.x, int(pt.y - len), len);
+                addLine(pt.x, pt.y - len, pt.x, pt.y);
+                // addList(pt.x, int(pt.y - len), len);
+
                 pt.y -= len;
             }
         }
@@ -101,10 +110,14 @@ class Housing extends System {
 
     }
 
-    void addList(int x, int y, float len){
-        Rectangle rmp = new Rectangle(x, y, int(len), int(len));
-        rects.add(rmp);
-        // print("this ran!");
+    public void addLine(int x1, int y1, int x2, int y2){
+        Line tmp = new Line(x1,y1,x2,y2);
+        lines.add(tmp);
+    }
+
+    public void addLine(float x1, float y1, float x2, float y2){
+        Line tmp = new Line(int(x1),int(y1),int(x2),int(y2));
+        lines.add(tmp);
     }
 
 }
