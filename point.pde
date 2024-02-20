@@ -21,3 +21,12 @@
             return Objects.hash(x, y);
         }
     }
+
+    public class FPoint {
+        float x, y;
+
+        FPoint(float x, float y) {
+            this.x = x;
+            this.y = y;
+        }
+    }

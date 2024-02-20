@@ -7,10 +7,8 @@ class Housing extends System {
 
     Random rand = new Random();
 
-    Point pt = new Point(0,0);
-    Stack<Point> pts;
-
-    // ArrayList<Rectangle> rects = new ArrayList();
+    FPoint pt = new FPoint(0.0,0.0);
+    Stack<FPoint> pts;
 
     ArrayList<Line> lines = new ArrayList();
 
@@ -28,12 +26,8 @@ class Housing extends System {
         this.add("U -> [U r U d U l U u]");
         this.add("U -> [U r U d U l U u]");
         this.add("U -> [U r U d U l U u]");
-        // this.add("U -> [U r U d U l U]");
-        // this.add("U -> [U r U d U l U]");
-        // this.add("U -> [U r U d U l U]");
-        // this.add("U -> [U r U d U l U]");
-        // has to go to double, or else they will be insufficiently small
-        // could also double the length of the drawing.
+        this.add("U -> [U r U d U l U u]");
+
         this.add("U -> [xxyyzzqq]");
 
         this.add("r -> rr");
@@ -41,13 +35,13 @@ class Housing extends System {
         this.add("l -> ll");
         this.add("u -> uu");
 
-        // this doubling preserves the size of the squares as the len divides every time.
         this.add("x -> xx"); // right
         this.add("y -> yy"); // down
         this.add("z -> zz"); //left
         this.add("q -> qq"); // up
         
         pts = new Stack<>();
+        pts.push(pt);
 
     }
 
@@ -73,38 +67,27 @@ class Housing extends System {
             }
 
             if(c == '['){
-                pushMatrix(); 
                 pts.add(pt);
-                println(pts.size());
+                // println(pts.size());
             }
             if(c == ']'){
-                popMatrix();
                 pt = pts.pop();
-                println(pts.size());
-
             }
 
             if(c == 'x'){
-                // addList(pt.x, pt.y, len);
                 addLine(pt.x, pt.y, pt.x + len, pt.y);
-
                 pt.x += len;
             }
             if(c == 'y'){
-                // addList(int(pt.x - len), pt.y, len);
                 addLine(pt.x, pt.y, pt.x, pt.y + len);
                 pt.y += len;
             }
             if(c == 'z'){
                 addLine(pt.x - len, pt.y, pt.x, pt.y);
-
-                // addList(int(pt.x - len), int(pt.y - len), len);
                 pt.x -= len;
             }
             if(c == 'q'){
                 addLine(pt.x, pt.y - len, pt.x, pt.y);
-                // addList(pt.x, int(pt.y - len), len);
-
                 pt.y -= len;
             }
         }
