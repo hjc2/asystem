@@ -63,4 +63,8 @@ public class Maze {
         rectangles.add(tmp);
     }
 
+    public void add(Rectangle r){
+        rectangles.add(r);
+    }
+
 }

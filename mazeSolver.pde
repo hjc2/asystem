@@ -70,12 +70,6 @@ public class MazeSolver {
         return reconstructPath(cameFrom, start, goal);
     }
 
-    // Method to print discovered cells
-    private void printDiscoveredCells() {
-        for (Point p : discoveredCells) {
-            System.out.println(p.x + "," + p.y);
-        }
-    }
 
     // Other methods remain the same..
 

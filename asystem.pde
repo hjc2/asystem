@@ -4,17 +4,36 @@
 // Maze maze;
 Maze maze;
 
+Housing house = new Housing();
+
+
 
 void setup(){
 
-    maze = new Maze(50,50, 750, 750);
 
-    // println(maze.path.get(0).x);
-    size(800,800);
-    maze.add(100,100,25,25);
+    size(400,400);
 
-    maze.add(-10,100,100,25);
+    maze = new Maze(50,50, 350, 350);
 
+    // maze.add(100,100,25,25);
+
+    // maze.add(-10,100,100,25);
+
+    house.update();
+    house.update();
+    house.update();
+    house.update();
+    house.update();
+
+    house.populate();
+    
+    println(house.rects.size());
+    for(Rectangle r : house.rects){
+
+        maze.add(r);
+
+        println(r.x);
+    }
     maze.solve();
 
 }
@@ -24,4 +43,6 @@ void draw(){
     background(255);
 
     maze.draw();
+
+    // house.draw();
 }
