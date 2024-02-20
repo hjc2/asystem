@@ -12,6 +12,8 @@ class Housing extends System {
 
     ArrayList<Rectangle> rects = new ArrayList();
 
+    int x = 0;
+    int y = 0;
 
     Housing(){
 
@@ -21,14 +23,7 @@ class Housing extends System {
         this.add("U -> [U r U d U l U]");
         this.add("U -> [U r U d U l U]");
         this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
-        this.add("U -> [U r U d U l U]");
+
         // has to go to double, or else they will be insufficiently small
         // could also double the length of the drawing.
         this.add("U -> [xxyyzzqq]");
@@ -38,16 +33,16 @@ class Housing extends System {
         this.add("l -> ll");
 
         // this doubling preserves the size of the squares as the len divides every time.
-        this.add("x -> xx"); 
-        this.add("y -> yy");
-        this.add("z -> zz");
-        this.add("q -> qq");
+        this.add("x -> xx"); // right
+        this.add("y -> yy"); // down
+        this.add("z -> zz"); //left
+        this.add("q -> qq"); // up
         
         pts = new Stack<>();
 
     }
 
-    public void draw(){
+    public void populate(){
 
         noFill();
         rectMode(CORNER);
@@ -60,98 +55,67 @@ class Housing extends System {
             char c = value.charAt(i);
             
             float len = (height) / pow(2,n);
-
+        
             if(c == 'r'){
-                translate(len,0);
+                // translate(len,0);
+                pt.x += len;
             }
             if(c == 'd'){
-                translate(0,len);
-            }
-            if(c == 'l'){
-                translate(-len,0);
-            }
-
-            if(c == '['){
-                pushMatrix(); 
-                pts.add(pt);
-            }
-            if(c == ']'){
-                popMatrix();
-                pt = pts.pop();
-            }
-
-            if(c == 'x'){
-                line(0,0,len,0);
-                translate(len,0);
-            }
-            if(c == 'y'){
-                line(0,0,0,len);
-                translate(0,len);
-            }
-            if(c == 'z'){
-                line(0,0,-len,0);
-                translate(-len,0);
-            }
-            if(c == 'q'){
-                line(0,0,0,-len);
-                translate(0,-len);
-            }
-        }
-    }
-
-    public void populate(){
-
-        for(int i=0; i<value.length(); i++) {
-
-            char c = value.charAt(i);
-            
-            float len = (height) / pow(2,n);
-
-            if(c == 'r'){
-                pt.x -= len;
-                addList(len);
-            }
-            if(c == 'd'){
-                pt.y -= len;
-                addList(len);
-            }
-            if(c == 'l'){
-                pt.x += len;
-                addList(len);
-            }
-
-            if(c == '['){
-                pushMatrix(); 
-                pts.add(pt);
-            }
-            if(c == ']'){
-                popMatrix();
-                pt = pts.pop();
-            }
-
-            if(c == 'x'){
-                pt.x -= len;
-                addList(len);
-            }
-            if(c == 'y'){
-                pt.y -= len;
-                addList(len);
-            }
-            if(c == 'z'){
-                pt.x += len;
-                addList(len);
-            }
-            if(c == 'q'){
+                // translate(0,len);
                 pt.y += len;
-                addList(len);
+            }
+            if(c == 'l'){
+                // translate(-len,0);
+                pt.x -= len;
+            }
+
+            if(c == '['){
+                pushMatrix(); 
+                pts.add(pt);
+            }
+            if(c == ']'){
+                popMatrix();
+                pt = pts.pop();
+            }
+
+            if(c == 'x'){
+                addList(pt.x, pt.y, len);
+                // line(0,0,len,0);
+                // translate(len,0);
+                pt.x += len;
+            }
+            if(c == 'y'){
+                addList(int(pt.x - len), pt.y, len);
+
+                // line(0,0,0,len);
+                // translate(0,len);
+                pt.y += len;
+            }
+            if(c == 'z'){
+                addList(int(pt.x - len), int(pt.y - len), len);
+
+                // line(0,0,-len,0);
+                // translate(-len,0);
+                pt.x -= len;
+            }
+            if(c == 'q'){
+                addList(pt.x, int(pt.y - len), len);
+
+                // line(0,0,0,-len);
+                // translate(0,-len);
+                pt.y -= len;
             }
         }
     }
 
-    void addList(float len){
-        Rectangle rmp = new Rectangle(pt.x, pt.y, int(len), int(len));
+    public void draw(){
+
+    }
+
+    void addList(int x, int y, float len){
+        Rectangle rmp = new Rectangle(x, y, int(len) +1, int(len) + 1);
         rects.add(rmp);
-        print("this ran!");
+        // print("this ran!");
     }
 
 }

@@ -37,6 +37,7 @@ public class Maze {
         strokeWeight(3);
 
         for (Rectangle rect : rectangles) {
+            noFill();
             rect(rect.x, rect.y, rect.w, rect.h);
         }  
 
