@@ -10,7 +10,7 @@ class Housing extends System {
     Point pt = new Point(0,0);
     Stack<Point> pts;
 
-    ArrayList<Rectangle> rects = new ArrayList();
+    // ArrayList<Rectangle> rects = new ArrayList();
 
     int x = 0;
     int y = 0;
@@ -79,30 +79,19 @@ class Housing extends System {
             }
 
             if(c == 'x'){
-                addList(pt.x, pt.y, len);
-                // line(0,0,len,0);
-                // translate(len,0);
+                // addList(pt.x, pt.y, len);
                 pt.x += len;
             }
             if(c == 'y'){
                 addList(int(pt.x - len), pt.y, len);
-
-                // line(0,0,0,len);
-                // translate(0,len);
                 pt.y += len;
             }
             if(c == 'z'){
                 addList(int(pt.x - len), int(pt.y - len), len);
-
-                // line(0,0,-len,0);
-                // translate(-len,0);
                 pt.x -= len;
             }
             if(c == 'q'){
                 addList(pt.x, int(pt.y - len), len);
-
-                // line(0,0,0,-len);
-                // translate(0,-len);
                 pt.y -= len;
             }
         }
@@ -113,7 +102,7 @@ class Housing extends System {
     }
 
     void addList(int x, int y, float len){
-        Rectangle rmp = new Rectangle(x, y, int(len) +1, int(len) + 1);
+        Rectangle rmp = new Rectangle(x, y, int(len), int(len));
         rects.add(rmp);
         // print("this ran!");
     }

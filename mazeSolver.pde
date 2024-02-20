@@ -9,7 +9,7 @@ public class MazeSolver {
     private int[][] grid;
     private Set<Point> discoveredCells = new HashSet<>(); // Track discovered cells
 
-    public MazeSolver(ArrayList<Rectangle> rectangles, int width) {
+    public MazeSolver(ArrayList<Rectangle> rectangles, ArrayList<Line> lines, int width) {
 
         GRID_SIZE = width;
 
@@ -36,6 +36,20 @@ public class MazeSolver {
                     grid[a][b] = 1; // Mark as blocked
                 }
             }
+        }
+
+        for(Line line : lines){
+
+            if(x1 == x2){
+                
+                // for(int i = )
+            }
+
+            if(y1 == y2){
+
+
+            }
+
         }
     }
 

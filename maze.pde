@@ -7,6 +7,7 @@ public class Maze {
     // List<int[]> rectangles = Arrays.asList(new int[]{-2,-2,1,1});
 
     ArrayList<Rectangle> rectangles = new ArrayList();
+    ArrayList<Line> lines = new ArrayList();
 
     List<Point> path;
     MazeSolver solver;
@@ -27,9 +28,10 @@ public class Maze {
     }
 
     public void solve(){
-        solver = new MazeSolver(rectangles, width);
+        solver = new MazeSolver(rectangles, lines, width);
         path = solver.solve(start, goal);
     }
+
     public void draw(){
     
         rectMode(CORNER);
@@ -66,6 +68,11 @@ public class Maze {
 
     public void add(Rectangle r){
         rectangles.add(r);
+    }
+
+    public void addLine(int x1, int y1, int x2, int y2){
+        Line l = new Line(x1,y1,x2,y2);
+        lines.add(l);
     }
 
 }
