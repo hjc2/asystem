@@ -29,7 +29,7 @@ public class Maze {
     public void draw(){
     
         rectMode(CORNER);
-        stroke(0);
+        stroke(80,80,80);
         strokeWeight(3);
 
         for (Line line : lines) {
@@ -41,8 +41,8 @@ public class Maze {
         stroke(120,255,120);
 
 
-        strokeWeight(3);
-        stroke(0,0,255);
+        strokeWeight(1);
+        stroke(255,255,255);
 
         for(Point p : path) {
             point(p.x, p.y);
