@@ -21,26 +21,35 @@ void setup(){
 
     maze = new Maze(10,10, width / scale - 10, width / scale - 10);
 
-    // house.update();
-    // house.update();
-    // house.update();
-    // house.populate();
-    println(house.value);
 
-    house.addLine(0,50,150,50);
-    // house.addLine(50,100,250,100);
+    while(true){
+        house = new Housing();
 
-    
-    board = makeGrid(house.lines, width / scale);
+        house.update();
+        house.update();
+        house.update();
+        house.populate();
+
+        board = makeGrid(house.lines, width / scale);
+
+        if(b.isPath(board, maze.start, maze.goal)){
+            break;
+        } // if a path, end loop;
+    }
+
+
 
     maze.lines = house.lines;
 
     println(maze.lines.size());
+    println(house.value);
 
+    for(int i = 0; i < maze.lines.size(); i++){
+        maze.lines.get(i).print();
+    }
+    // println(b.isPath(board, maze.start, maze.goal));
 
-    println(b.isPath(board, maze.start, maze.goal));
-
-    // maze.solve(board);
+    maze.solve(board);
 }
 
 void draw(){
@@ -49,6 +58,6 @@ void draw(){
 
     // scale(scale);
 
-    // maze.draw();
+    maze.draw();
 
 }
