@@ -24,12 +24,6 @@ int[][] makeGrid(ArrayList<Line> lines, int pw){
         y2 = y2 >= GRID_SIZE ? GRID_SIZE - 1 : y2;
         y2 = y2 < 0 ? 0 : y2;
 
-        if(line.x2 >= 200){
-            println(x2);
-            println(x1);
-            println(y1);
-            println(y2);
-        }
 
         if(y1 == y2){
             for(int i = x1; i <= x2; i++){

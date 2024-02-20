@@ -13,12 +13,12 @@ class BFS {
     // Check if row and col are in range and cell is not blocked and not visited
     return (row >= 0) && (row < ROW) &&
            (col >= 0) && (col < COL) &&
-           (grid[row][col] == 1) && (!visited[row][col]);
+           (grid[row][col] == 0) && (!visited[row][col]);
   }
   
   // Function to check if there is a path from start point to end point
   public boolean isPath(int[][] grid, Point start, Point end) {
-    if (grid[start.x][start.y] == 0 || grid[end.x][end.y] == 0) {
+    if (grid[start.x][start.y] == 1 || grid[end.x][end.y] == 1) {
       return false; // Start or end is blocked
     }
     
