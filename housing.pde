@@ -28,14 +28,14 @@ class Housing extends System {
         this.add("U -> [U r U d U l U u]");
         this.add("U -> [U r U d U l U u]");
 
-        this.add("U -> [xxyyzzqq]");
+        this.add("U -> [x1yyzzqq]");
 
         this.add("r -> rr");
         this.add("d -> dd");
         this.add("l -> ll");
         this.add("u -> uu");
 
-        this.add("x -> xx"); // right
+        this.add("x -> x"); // right
         this.add("y -> yy"); // down
         this.add("z -> zz"); //left
         this.add("q -> qq"); // up
@@ -75,8 +75,12 @@ class Housing extends System {
             }
 
             if(c == 'x'){
-                addLine(pt.x, pt.y, pt.x + len, pt.y);
-                pt.x += len;
+                i++;
+                c = value.charAt(i);
+                int tmp = c - '0';
+                float l = pow(2,tmp);
+                addLine(pt.x, pt.y, pt.x + len * l, pt.y);
+                pt.x += (len * l);
             }
             if(c == 'y'){
                 addLine(pt.x, pt.y, pt.x, pt.y + len);

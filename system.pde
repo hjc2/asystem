@@ -50,6 +50,12 @@ abstract class System {
                 // Select a random production if multiple are available
                 String rule = productions.get(random.nextInt(productions.size()));
                 newState.append(rule);
+            } else if(Character.isDigit(currentChar)){
+                if (currentChar == '9') {
+                    newState.append('0'); // Wrap around if it's '9'
+                } else {
+                    newState.append((char) (currentChar + 1)); // Increment character by 1
+                }
             } else {
                 newState.append(currentChar);
             }

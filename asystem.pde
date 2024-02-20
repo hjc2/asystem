@@ -27,10 +27,10 @@ void setup(){
 
         house.update();
         house.update();
-        house.update();
-        house.update();
-        house.update();
         // house.update();
+        // house.update();
+        // house.update();
+        // // house.update();
 
         house.populate();
 
