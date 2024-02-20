@@ -50,7 +50,7 @@ abstract class System {
                 // Select a random production if multiple are available
                 String rule = productions.get(random.nextInt(productions.size()));
                 newState.append(rule);
-            } else if(Character.isDigit(currentChar)){
+            } else if(Character.isDigit(currentChar)){ /// parametric simple solution - would need brackets for something with more oomph
                 if (currentChar == '9') {
                     newState.append('0'); // Wrap around if it's '9'
                 } else {
