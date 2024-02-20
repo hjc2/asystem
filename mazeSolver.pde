@@ -36,6 +36,8 @@ public class MazeSolver {
             if(x1 == x2){
                 for(int i = x1; i <= x2; i++){
                     grid[i][y1] = 1;
+                    println(x1 + " " + x2);
+                    println("pixel selected");
                 }
                 for(int i = x2; i <= x1; i++){
                     grid[i][y1] = 1;
@@ -118,6 +120,22 @@ public class MazeSolver {
         return path;
     }
 
+    public void draw(){
+        for(int i = 0; i < GRID_SIZE; i++){
+            for(int j = 0; j < GRID_SIZE; j++){
+                // println(i + " " + j);
+
+                if(grid[i][j] == 0){
+                    stroke(255);
+                }
+                if(grid[i][j] == 1){
+                    stroke(0);
+                }
+                strokeWeight(1);
+                point(i,j);
+            }
+        }
+    }
 }
 
 
