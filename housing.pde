@@ -21,27 +21,22 @@ class Housing extends System {
 
         stack.push("U");
         n += 1;
-        value = "[U r0 U d U l U u]";
+        value = "[U r0 U d0 U l0 U u0]";
 
-        this.add("U -> [U r0 U d U l U u]");
-        this.add("U -> [U r0 U d U l U u]");
-        this.add("U -> [U r0 U d U l U u]");
-        this.add("U -> [U r0 U d U l U u]");
-        this.add("U -> [U r0 U d U l U u]");
-
-
-        // this.add("U -> [U r1 U d U l U u]");
-        // this.add("U -> [U r1 U d U l U u]");
-        // this.add("U -> [U r1 U d U l U u]");
-        // this.add("U -> [U r1 U d U l U u]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
 
 
         this.add("U -> [x1y1z1q1]");
 
         this.add("r -> r");
-        this.add("d -> dd");
-        this.add("l -> ll");
-        this.add("u -> uu");
+        this.add("d -> d");
+        this.add("l -> l");
+        this.add("u -> u");
 
         this.add("x -> x"); // right
         this.add("y -> y"); // down
@@ -66,16 +61,22 @@ class Housing extends System {
                 float l = calculateL(value.charAt(i));
 
                 pt.x += len * l;
-                // pt.x += len;
             }
             if(c == 'd'){
-                pt.y += len;
+                i++;
+                float l = calculateL(value.charAt(i));
+
+                pt.y += len * l;
             }
             if(c == 'l'){
-                pt.x -= len;
+                i++;
+                float l = calculateL(value.charAt(i));
+                pt.x -= len * l;
             }
             if(c == 'u'){
-                pt.y -= len;
+                i++;
+                float l = calculateL(value.charAt(i));
+                pt.y -= len * l;
             }
 
             if(c == '['){
