@@ -13,17 +13,12 @@ int[][] board;
 
 int scale = 1;
 
-    // Point h = new Point(10,10);
-    // Point g = new Point(width - 10, width - 10);
 
 void setup(){
 
     size(400,400);
-
     maze = new Maze(10,10, width - 10, width - 10);
-
     constructFractal();
-
     solveMaze(10,10, width - 10, width - 10);
 
 }
