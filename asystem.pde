@@ -43,6 +43,7 @@ void constructFractal(){
         house.update();
         house.update();
         house.update();
+        house.update();
 
         house.populate();
 

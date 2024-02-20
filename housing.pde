@@ -28,8 +28,6 @@ class Housing extends System {
         this.add("U -> [U r0 U d0 U l0 U u0]");
         this.add("U -> [U r0 U d0 U l0 U u0]");
         this.add("U -> [U r0 U d0 U l0 U u0]");
-        this.add("U -> [U r0 U d0 U l0 U u0]");
-
 
         this.add("U -> [x1y1z1q1]");
 
