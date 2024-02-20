@@ -38,11 +38,14 @@ public class Maze {
         }  
 
         strokeWeight(1);
-        stroke(120,255,120);
+        stroke(255,255,255);
 
+        for(Point p : solver.discoveredCells){
+            point(p.x,p.y);
+        }
 
         strokeWeight(1);
-        stroke(255,255,255);
+        stroke(0,0,255);
 
         for(Point p : path) {
             point(p.x, p.y);
