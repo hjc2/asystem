@@ -13,14 +13,15 @@ int[][] board;
 
 int scale = 1;
 
+int depth = 4;
+
 
 void setup(){
 
-    size(400,400);
+    size(800,800);
     maze = new Maze(10,10, width - 10, width - 10);
     constructFractal();
     solveMaze(10,10, width - 10, width - 10);
-
 }
 
 void draw(){
@@ -37,13 +38,13 @@ void constructFractal(){
     while(true){
         house = new Housing();
 
+        for(int i = 0; i < depth; i++){
         house.update();
-        house.update();
-        house.update();
-        house.update();
-        house.update();
-        house.update();
-        house.update();
+        }
+
+        // house.update();
+        // house.update();
+        // house.update();
 
         house.populate();
 
@@ -69,4 +70,21 @@ void mouseClicked(){
     if(b.isPath(board, maze.start, tmp)){
         solveMaze(maze.start.x, maze.start.y, mouseX, mouseY);
     }
+}
+
+void keyPressed(){
+
+    // if(keyCode == UP){
+    //     house.percUp();
+    //     constructFractal();
+    //     solveMaze(10,10, width - 10, width - 10);
+    // }
+
+    if(keyCode == 'k' || keyCode == 'K'){
+        maze = new Maze(10,10, width - 10, width - 10);
+        depth++;
+        constructFractal();
+        solveMaze(10,10,width - 10, width - 10);
+    }
+
 }

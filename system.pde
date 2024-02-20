@@ -40,6 +40,7 @@ abstract class System {
         rules.put(tmp, productions);
     }
 
+
     String update() {
         stack.push(value);
         StringBuilder newState = new StringBuilder();

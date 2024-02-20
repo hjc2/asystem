@@ -1,7 +1,5 @@
 
-
 import java.util.Random;
-
 
 class Housing extends System {
 
@@ -15,6 +13,8 @@ class Housing extends System {
     int x = 0;
     int y = 0;
 
+    int perc = 1;
+
     Housing(){
 
         super("U");
@@ -23,7 +23,6 @@ class Housing extends System {
         n += 1;
         value = "[U r0 U d0 U l0 U u0]";
 
-        this.add("U -> [U r0 U d0 U l0 U u0]");
         this.add("U -> [U r0 U d0 U l0 U u0]");
         this.add("U -> [U r0 U d0 U l0 U u0]");
         this.add("U -> [U r0 U d0 U l0 U u0]");
@@ -132,6 +131,24 @@ class Housing extends System {
         float l = pow(2,tmp);
 
         return(l);
+    }
+
+    void percUp(){
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        perc++;
+    }
+
+    void percDown(){
+        if(perc > 1){
+        // this.add("U -> [U r0 U d0 U l0 U u0]");
+        // this.add("U -> [U r0 U d0 U l0 U u0]");
+        // this.add("U -> [U r0 U d0 U l0 U u0]");
+        // this.add("U -> [U r0 U d0 U l0 U u0]");
+        perc--;
+        }
     }
 
 }
