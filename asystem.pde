@@ -1,72 +1,43 @@
 
 
 
-// Maze maze;
-Maze maze;
+Rasp r = new Rasp();
 
-Housing house = new Housing();
-
-BFS b = new BFS();
-
-int[][] board;
-
-
-int scale = 1;
-
+boolean gol = true;
 
 void setup(){
 
     size(400,400);
-    maze = new Maze(10,10, width - 10, width - 10);
-    constructFractal();
-    solveMaze(10,10, width - 10, width - 10);
+
+    r.gridForPoints();
 
 }
 
 void draw(){
-
     background(0);
-
-    // scale(scale);
-
-    maze.draw();
-
+    r.draw();
 }
 
-void constructFractal(){
-    while(true){
-        house = new Housing();
+void keyPressed(){
 
-        house.update();
-        house.update();
-        house.update();
-        house.update();
-        house.update();
-        house.update();
-        house.update();
-
-        house.populate();
-
-
-        board = makeGrid(house.lines, width / scale);
-
-        if(b.isPath(board, maze.start, maze.goal)){
-            break;
-        } // if a path, end loop;
+    if(keyCode == UP){
+        r.forward();
+        r.mazeSolve();
+    }
+    if(keyCode == DOWN){
+        r.backward();
+        r.mazeSolve();
+    }
+    if(key == 'g' || key == 'G'){
+        gol = true;
+    }
+    if(key == 's' || key == 'S'){
+        gol = false;
+        println("ja");
     }
 }
 
-void solveMaze(int x1, int y1, int x2, int y2){
-    maze = new Maze(x1, y1, x2, y2);
-    maze.lines = house.lines;
-    maze.solve(board);
-}
 
 void mouseClicked(){
-
-    Point tmp = new Point(mouseX, mouseY);
-    
-    if(b.isPath(board, maze.start, tmp)){
-        solveMaze(maze.start.x, maze.start.y, mouseX, mouseY);
-    }
+    r.click(gol);
 }

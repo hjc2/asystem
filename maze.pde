@@ -7,6 +7,8 @@ public class Maze {
     ArrayList<Line> lines = new ArrayList();
 
     List<Point> path;
+    private Set<Point> discoveredCells;
+
     MazeSolver solver;
     Point start;
     Point goal;
@@ -25,29 +27,28 @@ public class Maze {
         solver = new MazeSolver(grid);
         
         path = solver.solve(start, goal);
+        discoveredCells = solver.discoveredCells;
     }
 
-    public void draw(){
-    
-        rectMode(CORNER);
+    public void drawMaze(){
         stroke(140,140,140);
         strokeWeight(1);
 
         strokeCap(PROJECT);
 
-
         for (Line line : lines) {
             noFill();
             line(line.x1, line.y1, line.x2, line.y2);
         }  
+    }
 
+    public void drawSolution(){
         strokeWeight(1);
         stroke(0,255,0);
 
-        for(Point p : solver.discoveredCells){
+        for(Point p : discoveredCells){
             point(p.x,p.y);
         }
-
 
         strokeWeight(3);
         stroke(0,0,255);
@@ -61,8 +62,6 @@ public class Maze {
         point(start.x,start.y);
         stroke(255,0,0);
         point(goal.x,goal.y);
-
-
     }
 
 
@@ -71,10 +70,5 @@ public class Maze {
         Line l = new Line(x1,y1,x2,y2);
         lines.add(l);
     }
-
-    public void drawGrid(){
-        solver.draw();
-    }
-    
 
 }

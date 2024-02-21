@@ -13,6 +13,9 @@ abstract class System {
     Stack<String> stack;
     Random random = new Random();
 
+    ArrayList<Line> lines = new ArrayList();
+
+
     // Change to map each character to an ArrayList of strings
     HashMap<Character, ArrayList<String>> rules = new HashMap<Character, ArrayList<String>>();
 
@@ -66,6 +69,7 @@ abstract class System {
     }
 
     void back() {
+        
         if (!stack.isEmpty()) {
             value = stack.pop();
             n--;
@@ -73,4 +77,5 @@ abstract class System {
     }
 
     public abstract void draw();
+    public abstract void populate();
 }
