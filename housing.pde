@@ -1,19 +1,11 @@
 
 
-import java.util.Random;
-
-
 class Housing extends System {
-
-    Random rand = new Random();
 
     FPoint pt = new FPoint(0.0,0.0);
     Stack<FPoint> pts;
 
     ArrayList<Line> lines = new ArrayList();
-
-    int x = 0;
-    int y = 0;
 
     Housing(){
 
@@ -28,18 +20,22 @@ class Housing extends System {
         this.add("U -> [U r0 U d0 U l0 U u0]");
         this.add("U -> [U r0 U d0 U l0 U u0]");
         this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
+        this.add("U -> [U r0 U d0 U l0 U u0]");
 
         this.add("U -> [x1y1z1q1]");
 
-        this.add("r -> r");
-        this.add("d -> d");
-        this.add("l -> l");
-        this.add("u -> u");
+        // this.add("r -> r");
+        // this.add("d -> d");
+        // this.add("l -> l");
+        // this.add("u -> u");
 
-        this.add("x -> x"); // right
-        this.add("y -> y"); // down
-        this.add("z -> z"); //left
-        this.add("q -> q"); // up
+        // this.add("x -> x"); // right
+        // this.add("y -> y"); // down
+        // this.add("z -> z"); //left
+        // this.add("q -> q"); // up
         
         pts = new Stack<>();
         pts.push(pt);

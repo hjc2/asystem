@@ -6,6 +6,8 @@ Maze maze;
 
 Housing house = new Housing();
 
+Hilbert hilbert = new Hilbert();
+
 BFS b = new BFS();
 
 int[][] board;
@@ -13,13 +15,38 @@ int[][] board;
 
 int scale = 1;
 
+Point start;
+Point goal;
 
 void setup(){
 
-    size(400,400);
-    maze = new Maze(10,10, width - 10, width - 10);
-    constructFractal();
-    solveMaze(10,10, width - 10, width - 10);
+// println(width);
+
+    size(800,800);
+
+    start = new Point(5,385);
+    goal = new Point(20, 385);
+
+    // constructFractal();
+
+    hilbert.update();
+    hilbert.update();
+    hilbert.update();
+    hilbert.update();    
+    hilbert.update();
+    // hilbert.update();
+
+    // hilbert.update();
+
+    hilbert.populate();
+
+    board = makeGrid(hilbert.lines, width / scale);
+
+    maze = new Maze(start.x, start.y, goal.x, goal.y);
+
+
+    println(hilbert.lines.size());
+
 
 }
 
@@ -29,11 +56,18 @@ void draw(){
 
     // scale(scale);
 
-    maze.draw();
+    solveMaze(maze.start.x, maze.start.y, maze.goal.x, maze.goal.y);
 
+    maze.draw();
+    // for (Line line : hilbert.lines) {
+    //     stroke(255);
+    //     noFill();
+    //     line(line.x1, line.y1, line.x2, line.y2);
+    // }  
 }
 
 void constructFractal(){
+
     while(true){
         house = new Housing();
 
@@ -50,15 +84,21 @@ void constructFractal(){
 
         board = makeGrid(house.lines, width / scale);
 
-        if(b.isPath(board, maze.start, maze.goal)){
+
+        if(b.isPath(board, start, goal)){
             break;
-        } // if a path, end loop;
+        }
+
     }
+
+
+
+
 }
 
 void solveMaze(int x1, int y1, int x2, int y2){
     maze = new Maze(x1, y1, x2, y2);
-    maze.lines = house.lines;
+    maze.lines = hilbert.lines;
     maze.solve(board);
 }
 
