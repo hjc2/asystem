@@ -58,7 +58,7 @@ public class Maze {
         }
 
         strokeWeight(3);
-        stroke(0,255,0);
+        stroke(255,0,0);
         point(start.x,start.y);
         stroke(255,0,0);
         point(goal.x,goal.y);

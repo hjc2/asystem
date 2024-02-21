@@ -22,6 +22,7 @@ class Hilbert extends System {
 
     public void populate(){
 
+        mode = 0;
         lines = new ArrayList();
 
         for(int i=0; i<value.length(); i++) {
@@ -57,6 +58,9 @@ class Hilbert extends System {
             }
 
         }
+
+         pt = new FPoint(0.0,0.0);
+
     }
 
     public void draw(){
@@ -71,15 +75,6 @@ class Hilbert extends System {
     public void addLine(float x1, float y1, float x2, float y2){
         Line tmp = new Line(int(x1),int(y1),int(x2),int(y2));
         lines.add(tmp);
-    }
-
-
-    public float calculateL(char c){
-
-        int tmp = c - '0';
-        float l = pow(2,tmp);
-
-        return(l);
     }
 
     public void plus(){

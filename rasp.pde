@@ -17,7 +17,7 @@ class Rasp {
     Point goal;
     Point start;
 
-    int k = 2;
+    int k = 1;
     final int maxK = 6;
 
     boolean toggle = false;
@@ -40,7 +40,7 @@ class Rasp {
                 this.sys = new Hilbert();
             }
 
-            for(int i = 0; i < 2; i++){
+            for(int i = 0; i < k; i++){
                 this.sys.update();  
             }
 
@@ -95,6 +95,8 @@ class Rasp {
 
         board = makeGrid(sys.lines, width);
         k--;
+
+        println(sys.lines.size());
     }
 
     public void click(boolean gol){
