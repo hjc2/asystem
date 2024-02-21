@@ -33,7 +33,7 @@ class Rasp {
             this.sys = new Housing();
 
             for(int i = 0; i < 2; i++){
-                this.sys.update();
+                this.sys.update();  
             }
 
             this.sys.populate();
@@ -95,13 +95,11 @@ class Rasp {
             if(b.isPath(board,start,tmp)){
                 goal = tmp;
                 mazeSolve();
-                println("ran!");
             }
         } else {
             if(b.isPath(board,tmp,start)){
                 start = tmp;
                 mazeSolve();
-                println("ran :D");
             }
         }
 
