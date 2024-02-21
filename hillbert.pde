@@ -7,14 +7,9 @@ class Hilbert extends System {
     FPoint pt = new FPoint(0.0,0.0);
 
 
-    ArrayList<Line> lines = new ArrayList();
-
-
-    int mode = 0; 
-    //0 right
-    //1 down
-    //2 left
-    //3 up
+    int mode = 0;
+    
+     
 
     Hilbert(){
 
