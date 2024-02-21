@@ -1,7 +1,7 @@
 
 
 
-Rasp r = new Rasp();
+Rasp r = new Rasp(2);
 
 boolean gol = true;
 
@@ -33,7 +33,6 @@ void keyPressed(){
     }
     if(key == 's' || key == 'S'){
         gol = false;
-        println("ja");
     }
 }
 

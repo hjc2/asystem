@@ -22,6 +22,8 @@ class Hilbert extends System {
 
     public void populate(){
 
+        lines = new ArrayList();
+
         for(int i=0; i<value.length(); i++) {
 
             char c = value.charAt(i);

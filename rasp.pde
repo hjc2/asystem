@@ -21,16 +21,24 @@ class Rasp {
     final int maxK = 6;
 
     boolean toggle = false;
+
+    int rep; // 1 -> House, 2 -> Hillbert
     // int k = 2;
 
-    Rasp(){   
-        start = new Point(5,5);
-        goal = new Point(395, 395);
+    Rasp(int rep){   
+        start = new Point(203,200);
+        goal = new Point(205, 200);
+        this.rep = rep;
     }
 
     public void gridForPoints(){
         while(true){
-            this.sys = new Housing();
+            if(rep == 1){
+                this.sys = new Housing();
+            }
+            if(rep == 2){
+                this.sys = new Hilbert();
+            }
 
             for(int i = 0; i < 2; i++){
                 this.sys.update();  
@@ -43,6 +51,7 @@ class Rasp {
             if(b.isPath(board, start, goal)){
                 break;
             }
+            println("its cooking...");
         }
         this.mazeSolve();
     }
