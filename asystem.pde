@@ -1,13 +1,18 @@
 
 
+int rval = 2;
 
-Rasp r = new Rasp(2);
+int maxVal = 2;
+
+Rasp r = new Rasp(rval);
+
+boolean disc = true;
 
 boolean gol = true;
 
 void setup(){
 
-    size(400,400);
+    size(800,800);
 
     r.gridForPoints();
 
@@ -15,6 +20,9 @@ void setup(){
 
 void draw(){
     background(0);
+
+    if(disc){ r.drawDiscover();}
+
     r.draw();
 }
 
@@ -34,9 +42,27 @@ void keyPressed(){
     if(key == 's' || key == 'S'){
         gol = false;
     }
+
+    if(key == 't' || key == 'T'){
+        if(rval >= maxVal){
+            rval = 1;
+        } else {
+            rval++;
+        }
+        r = new Rasp(rval);
+        r.gridForPoints();
+        println(rval);
+    } 
+
+    if(key == 'd' || key == 'D'){
+        disc = !disc;
+    }
+
 }
 
 
 void mouseClicked(){
+
     r.click(gol);
+
 }

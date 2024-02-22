@@ -43,13 +43,6 @@ public class Maze {
     }
 
     public void drawSolution(){
-        strokeWeight(1);
-        stroke(0,255,0);
-
-        for(Point p : discoveredCells){
-            point(p.x,p.y);
-        }
-
         strokeWeight(3);
         stroke(0,0,255);
 
@@ -64,11 +57,19 @@ public class Maze {
         point(goal.x,goal.y);
     }
 
+    public void drawDiscover(){
+        strokeWeight(1);
+        stroke(0,255,0);
+
+        for(Point p : discoveredCells){
+            point(p.x,p.y);
+        }
+    }
+
 
 
     public void addLine(int x1, int y1, int x2, int y2){
         Line l = new Line(x1,y1,x2,y2);
         lines.add(l);
     }
-
 }

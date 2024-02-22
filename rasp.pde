@@ -18,7 +18,9 @@ class Rasp {
     Point start;
 
     int k = 1;
-    final int maxK = 6;
+    int maxK = 6;
+
+    int maxQ;
 
     boolean toggle = false;
 
@@ -26,8 +28,8 @@ class Rasp {
     // int k = 2;
 
     Rasp(int rep){   
-        start = new Point(203,200);
-        goal = new Point(205, 200);
+        start = new Point(220,220);
+        goal = new Point(240, 240);
         this.rep = rep;
     }
 
@@ -35,9 +37,13 @@ class Rasp {
         while(true){
             if(rep == 1){
                 this.sys = new Housing();
+                maxK = 7;
+                maxQ = 40;
             }
             if(rep == 2){
                 this.sys = new Hilbert();
+                maxK = 7;
+                maxQ = 1;
             }
 
             for(int i = 0; i < k; i++){
@@ -58,8 +64,13 @@ class Rasp {
 
     public void draw(){
         maze.drawMaze();
+        // this.drawReal();
         maze.drawSolution();
     };
+
+    public void drawDiscover(){
+        maze.drawDiscover();
+    }
 
     public void mazeSolve(){
         maze = new Maze(start.x, start.y, goal.x, goal.y);
@@ -70,7 +81,7 @@ class Rasp {
     public void forward(){
 
         int q = 0;
-        while(true && k < maxK && q <= 40 ){
+        while(true && k < maxK && q <= maxQ ){
 
             sys.update();
             sys.populate();
@@ -87,6 +98,8 @@ class Rasp {
             q++;
         }
 
+        // println(k);
+
     }
 
     public void backward(){
@@ -96,7 +109,7 @@ class Rasp {
         board = makeGrid(sys.lines, width);
         k--;
 
-        println(sys.lines.size());
+        // println(sys.lines.size());
     }
 
     public void click(boolean gol){
@@ -116,4 +129,16 @@ class Rasp {
 
     }
 
+    public void drawReal(){
+        stroke(255);
+        strokeWeight(1);
+
+        for(int i = 0; i < width; i++){
+            for(int j = 0; j < width; j++){
+                if(board[i][j] == 1){
+                    point(i,j);
+                }
+            }
+        }
+    }
 }

@@ -1,10 +1,12 @@
 
 
 
-class Hilbert extends System {
 
 
-    FPoint pt = new FPoint(20.0,20.0);
+class Spiral extends System {
+
+
+    FPoint pt = new FPoint(0.0,0.0);
 
 
     int mode = 0;
@@ -15,7 +17,7 @@ class Hilbert extends System {
 
      
 
-    Hilbert(){
+    Spiral(){
 
         super("A");
 
@@ -33,7 +35,7 @@ class Hilbert extends System {
 
             char c = value.charAt(i);
             
-            float len = (height - 40) / (pow(2,n) - 1);
+            float len = (height - 200) / pow(2,n - 1);
 
             // println("len " + str(len));
 
@@ -65,7 +67,7 @@ class Hilbert extends System {
 
         }
 
-         pt = new FPoint(20.0,20.0);
+         pt = new FPoint(0.0,0.0);
 
     }
 
@@ -99,3 +101,6 @@ class Hilbert extends System {
         }
     }
 }
+
+// F -> F+FF -> F1+F2+F3
+// F -> F+FF -> F+FF+FFF

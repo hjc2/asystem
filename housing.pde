@@ -6,6 +6,7 @@ class Housing extends System {
     Stack<FPoint> pts;
 
 
+
     Housing(){
 
         super("U");
@@ -27,7 +28,6 @@ class Housing extends System {
         this.add("U -> [x1y1z1q1]");
         pts = new Stack<>();
         pts.push(pt);
-
     }
 
     public void populate(){
