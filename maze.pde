@@ -61,10 +61,12 @@ public class Maze {
         strokeWeight(1);
         // stroke(0,255,0);
         color l = color(255,255,0);
-        color y = color(0,255,0);
-        for(int p : costSoFar){
+        color y = color(0,255,255);
+        for (Map.Entry<Point, Integer> entry : costSoFar.entrySet()) {
+            Point p = entry.getKey();
+            int cost = entry.getValue();
 
-             int m = map(p, 0, width, 0,255);
+            float m = map((cost), 0, width, 0,255);
 
             lerpColor(l, y, m);
             point(p.x,p.y);
