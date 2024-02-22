@@ -65,7 +65,8 @@ class Housing extends System {
 
             if(c == '['){
 
-                pts.add(pt.clone());
+                // pts.add(pt.clone());
+                pts.add(pt);
             }
             if(c == ']'){
                 pt = pts.pop();

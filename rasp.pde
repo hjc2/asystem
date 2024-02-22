@@ -28,8 +28,10 @@ class Rasp {
     // int k = 2;
 
     Rasp(int rep){   
-        start = new Point(10,20);
-        goal = new Point(width - 10, height - 20);
+        start = new Point(20,200);
+        // goal = new Point(width - 10, height - 20);
+        // goal = new Point(width - 10, height - 20);
+        goal = new Point(25,200);
         this.rep = rep;
     }
 

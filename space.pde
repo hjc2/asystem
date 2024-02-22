@@ -13,7 +13,7 @@ class Space extends System {
         super("X");
 
         // this.add("X -> X[a1X][b1X][c1X][d1X]");
-        this.add("X -> [aX][bX][cX][dX]");
+        this.add("X -> X[aX][bX][cX][dX]");
 
         pts = new Stack<>();
 
@@ -37,7 +37,7 @@ class Space extends System {
 
             char c = value.charAt(i);
             
-            float len = width / (pow(2,n) + 1);
+            float len = (width - 200) / (pow(2,n) + 1);
 
             // 3, 5, 9
 
