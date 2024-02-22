@@ -28,8 +28,8 @@ class Rasp {
     // int k = 2;
 
     Rasp(int rep){   
-        start = new Point(20,200);
-        goal = new Point(40, 200);
+        start = new Point(10,20);
+        goal = new Point(width - 10, height - 20);
         this.rep = rep;
     }
 
@@ -57,7 +57,6 @@ class Rasp {
 
             this.sys.populate();
 
-            println(sys.lines.size());
             board = makeGrid(sys.lines, width);
 
             if(b.isPath(board, start, goal)){
