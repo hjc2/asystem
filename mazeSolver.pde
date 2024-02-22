@@ -1,28 +1,39 @@
+
+
+
+
 import java.util.*;
+import java.util.AbstractMap.SimpleEntry;
+
 
 public class MazeSolver {
+    private int GRID_SIZE;
     private int[][] grid;
-    private int gridSize;
-    private Map<Point, Integer> costSoFar = new HashMap<>();
+    public Set<SimpleEntry<Point, Integer>> discoveredCells = new HashSet<>();
+
 
     public MazeSolver(int[][] grid) {
+
+        GRID_SIZE = grid.length;
+
         this.grid = grid;
-        this.gridSize = grid.length;
+        
     }
 
     public List<Point> solve(Point start, Point goal) {
-        PriorityQueue<Point> frontier = new PriorityQueue<>(Comparator.comparingInt(costSoFar::get));
-        frontier.add(start);
-        costSoFar.put(start, 0);
-
         Map<Point, Point> cameFrom = new HashMap<>();
+        Map<Point, Integer> costSoFar = new HashMap<>();
+        PriorityQueue<Point> frontier = new PriorityQueue<>(Comparator.comparingInt(p -> costSoFar.get(p) + heuristic(p, goal)));
+        frontier.add(start);
         cameFrom.put(start, null);
+        costSoFar.put(start, 0);
+        discoveredCells.add(new SimpleEntry<>(start, 0));
 
         while (!frontier.isEmpty()) {
             Point current = frontier.poll();
 
             if (current.equals(goal)) {
-                return reconstructPath(cameFrom, start, goal);
+                break;
             }
 
             for (Point next : getNeighbors(current)) {
@@ -31,35 +42,64 @@ public class MazeSolver {
                     costSoFar.put(next, newCost);
                     frontier.add(next);
                     cameFrom.put(next, current);
+                    // discoveredCells.add(next); // Add next to discovered cells
+                    discoveredCells.add(new SimpleEntry<>(next, newCost));
+
                 }
             }
         }
 
-        return Collections.emptyList(); // Return an empty path if goal is not reachable
+        return reconstructPath(cameFrom, start, goal);
     }
+
+
+    // Other methods remain the same..
+
 
     private List<Point> getNeighbors(Point current) {
         List<Point> neighbors = new ArrayList<>();
-        int[] directions = {-1, 0, 1, 0, -1}; // For traversing left, up, right, down
+        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // 4-directional movement
 
-        for (int i = 0; i < 4; i++) {
-            int newX = current.x + directions[i];
-            int newY = current.y + directions[i + 1];
-
-            if (newX >= 0 && newX < gridSize && newY >= 0 && newY < gridSize && grid[newX][newY] == 0) { // Assuming 0 is a free space
-                neighbors.add(new Point(newX, newY));
+        for (int[] dir : directions) {
+            int nx = current.x + dir[0], ny = current.y + dir[1];
+            if (nx >= 0 && nx < GRID_SIZE && ny >= 0 && ny < GRID_SIZE && grid[nx][ny] == 0) {
+                neighbors.add(new Point(nx, ny));
             }
         }
 
         return neighbors;
     }
 
+    private int heuristic(Point a, Point b) {
+        return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+    }
+
     private List<Point> reconstructPath(Map<Point, Point> cameFrom, Point start, Point goal) {
-        List<Point> path = new ArrayList<>();
-        for (Point at = goal; at != null; at = cameFrom.get(at)) {
-            path.add(at);
+        LinkedList<Point> path = new LinkedList<>();
+        Point current = goal;
+        while (!current.equals(start)) {
+            path.addFirst(current);
+            current = cameFrom.get(current);
         }
-        Collections.reverse(path);
+        path.addFirst(start);
         return path;
     }
+
+    public void draw(){
+        for(int i = 0; i < GRID_SIZE; i++){
+            for(int j = 0; j < GRID_SIZE; j++){
+                // println(i + " " + j);
+
+                if(grid[i][j] == 0){
+                    stroke(255);
+                }
+                if(grid[i][j] == 1){
+                    stroke(0);
+                }
+                strokeWeight(1);
+                point(i,j);
+            }
+        }
+    }
 }
+

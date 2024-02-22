@@ -12,7 +12,7 @@ boolean gol = true;
 
 void setup(){
 
-    size(800,800);
+    size(400,400);
 
     r.gridForPoints();
 

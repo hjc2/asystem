@@ -7,12 +7,15 @@ public class Maze {
     ArrayList<Line> lines = new ArrayList();
 
     List<Point> path;
-    private Map<Point, Integer> costSoFar = new HashMap<>();
 
     MazeSolver solver;
     Point start;
     Point goal;
+    Set<SimpleEntry<Point, Integer>> discoveredCells = new HashSet<>();
 
+    color yellow = color(255,255,0);
+    color cyan = color(0,255,255);
+    
     public Maze(){
         this(0,0, 1, 1);
     }
@@ -27,7 +30,7 @@ public class Maze {
         solver = new MazeSolver(grid);
         
         path = solver.solve(start, goal);
-        costSoFar = solver.costSoFar;
+        discoveredCells = solver.discoveredCells;
     }
 
     public void drawMaze(){
@@ -59,17 +62,13 @@ public class Maze {
 
     public void drawDiscover(){
         strokeWeight(1);
-        // stroke(0,255,0);
-        color l = color(255,255,0);
-        color y = color(0,255,255);
-        for (Map.Entry<Point, Integer> entry : costSoFar.entrySet()) {
+        for (Map.Entry<Point, Integer> entry : discoveredCells) {
             Point p = entry.getKey();
             int cost = entry.getValue();
-
-            float m = map((cost), 0, width, 0,255);
-
-            lerpColor(l, y, m);
+            color k = lerpColor(yellow, cyan, map(cost,0,800,0,1));
+            stroke(k);
             point(p.x,p.y);
+            // println(cost);
         }
     }
 
