@@ -20,6 +20,9 @@ public class Point {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+    public Point clone() {
+        return new Point(this.x, this.y);
+    }
 }
 
 public class FPoint {
@@ -29,4 +32,8 @@ public class FPoint {
         this.x = x;
         this.y = y;
     }
+    public FPoint clone() {
+        return new FPoint(this.x, this.y);
+    }
+
 }

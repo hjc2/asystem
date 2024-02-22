@@ -3,8 +3,8 @@
 
 class Hilbert extends System {
 
-
-    FPoint pt = new FPoint(20.0,20.0);
+    float basis = 20.0;
+    FPoint pt = new FPoint(basis, basis);
 
 
     int mode = 0;
@@ -16,7 +16,7 @@ class Hilbert extends System {
      
 
     Hilbert(){
-
+        // basis = bas;
         super("A");
 
         this.add("A -> +BF-AFA-FB+");
@@ -33,7 +33,7 @@ class Hilbert extends System {
 
             char c = value.charAt(i);
             
-            float len = (height - 40) / (pow(2,n) - 1);
+            float len = (height - (basis * 2)) / (pow(2,n) - 1);
 
             // println("len " + str(len));
 
@@ -65,7 +65,7 @@ class Hilbert extends System {
 
         }
 
-         pt = new FPoint(20.0,20.0);
+         pt = new FPoint(basis, basis);
 
     }
 

@@ -1,8 +1,8 @@
 
 
-int rval = 2;
+int rval = 3;
 
-int maxVal = 2;
+int maxVal = 3;
 
 Rasp r = new Rasp(rval);
 
