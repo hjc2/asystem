@@ -65,7 +65,7 @@ public class Maze {
         for (Map.Entry<Point, Integer> entry : discoveredCells) {
             Point p = entry.getKey();
             int cost = entry.getValue();
-            color k = lerpColor(yellow, cyan, map(cost,0,800,0,1));
+            color k = lerpColor(yellow, cyan, map(cost,0,width * 2,0,1));
             stroke(k);
             point(p.x,p.y);
             // println(cost);
