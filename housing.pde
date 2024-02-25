@@ -115,7 +115,6 @@ class Housing extends System {
 
 
     public float calculateL(char c){
-
         int tmp = c - '0';
         float l = pow(2,tmp);
 

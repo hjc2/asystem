@@ -48,8 +48,8 @@ class Rasp {
                 maxQ = 1;
             }
             if(rep == 3){
-                this.sys = new Space();
-                maxK = 5;
+                this.sys = new Koch();
+                maxK = 40;
                 maxQ = 1;
             }
 

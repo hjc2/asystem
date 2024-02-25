@@ -34,7 +34,7 @@ public class Maze {
     }
 
     public void drawMaze(){
-        stroke(140,140,140);
+        stroke(255,255,255);
         strokeWeight(1);
 
         strokeCap(PROJECT);
