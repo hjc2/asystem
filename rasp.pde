@@ -49,8 +49,8 @@ class Rasp {
             }
             if(rep == 3){
                 this.sys = new Koch();
-                maxK = 40;
-                maxQ = 1;
+                maxK = 50;
+                maxQ = 2;
             }
 
             for(int i = 0; i < k; i++){

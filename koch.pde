@@ -13,7 +13,7 @@ class Koch extends System {
     Koch(){
 
         // super("[F][F][F][F][F][F][F][F]");
-        super("[F][F][F][F][F][F][F][F]");
+        super("[F]rsssss[F]rssssss[F]rssssssss[F]rssssssss[F]rsss[F]rss[F]rs[F]");
 
         this.add("F -> fL");
         this.add("F -> fR");
