@@ -49,7 +49,14 @@ void keyPressed(){
         } else {
             rval++;
         }
+
+        Point tmpS = r.start;
+        Point tmpG = r.goal;
+        
         r = new Rasp(rval);
+        r.goal = tmpG;
+        r.start = tmpS;
+        
         r.gridForPoints();
         println(rval);
     } 

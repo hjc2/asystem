@@ -36,6 +36,8 @@ class Rasp {
     }
 
     public void gridForPoints(){
+        boolean right = true;
+        
         while(true){
             if(rep == 1){
                 this.sys = new Housing();
@@ -64,6 +66,33 @@ class Rasp {
             if(b.isPath(board, start, goal)){
                 break;
             }
+
+            if(this.goal.x < width - 5){
+                this.goal.x += 4;
+            }
+            if(this.goal.x < width - 5){
+                this.goal.x -= 1;
+            }
+            if(this.goal.y < height - 5){
+                this.goal.y += 4;
+            }
+            if(this.goal.y > height - 5){
+                this.goal.y -= 1;
+            }
+
+            if(this.start.x < width - 5){
+                this.start.x += 4;
+            }
+            if(this.start.x < width - 5){
+                this.start.x -= 1;
+            }
+            if(this.start.y < height - 5){
+                this.start.y += 4;
+            }
+            if(this.start.y > height - 5){
+                this.start.y -= 1;
+            }
+
             println("its cooking...");
         }
         this.mazeSolve();
